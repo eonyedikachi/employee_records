@@ -1,5 +1,6 @@
  <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 <meta charset="utf-8">
 <title th:text="${title}">Employees</title>
@@ -12,8 +13,10 @@
 <div class ="container-fluid">
 <div class="row">
 <div class ="col-md-12">
+
+
 <h2>Employee Form</h2>
-<form action ="#" th:action="@(${isAdd}?'/save':'/update')"  th:object="${employee}" method="post">
+<form action ="#" th:action="@{${isAdd}?'/save':'/update'}"  th:object="${employee}" method="post">
 <div class ="form-group">
 <input type="text" class ="from-control" id="firstName" placeholder="First Name" th:field="*{firstName}">
 </div>
@@ -21,10 +24,10 @@
 <input type="text" class ="from-control" id="lastName" placeholder="Last Name" th:field="*{lastName}">
 </div>
 <div class ="form-group">
-<input type="text" class ="from-control" id="email" placeholder="Email" th:field="email">
+<input type="text" class ="from-control" id="email" placeholder="Email" th:field="*{email}">
 </div>
 <div class ="form-group">
-<input type="text" class ="from-control" id="phoneNumber" placeholder="Phone Number" th:field="phoneNumber">
+<input type="text" class ="from-control" id="phoneNumber" placeholder="Phone Number" th:field="*{phoneNumber}">
 </div>
 <button type="submit" class="btn btn-primary" th:text="${isAdd}?'Save':'Update'">Submit</button>
 </form>

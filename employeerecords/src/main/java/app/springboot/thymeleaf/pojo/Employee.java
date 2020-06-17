@@ -29,8 +29,8 @@ public class Employee implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
 	private Long id;
-	@Column(name ="firt_name")
-	private String firtName;
+	@Column(name ="first_name")
+	private String firstName;
 	@Column(name ="last_name")
 	private String lastName;
 	@Column(name ="email")
@@ -39,7 +39,7 @@ public class Employee implements Serializable {
 	private String phoneNumber;
 	@Column(name ="created_date")
 	private Date createdDate;
-	@Column(name ="updatedDate")
+	@Column(name ="updated_date")
 	private Date updatedDate;
 	
 	public Long getId() {
@@ -48,11 +48,11 @@ public class Employee implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getFirtName() {
-		return firtName;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setFirtName(String firtName) {
-		this.firtName = firtName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 	public String getLastName() {
 		return lastName;
