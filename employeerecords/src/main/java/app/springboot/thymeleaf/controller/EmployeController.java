@@ -16,22 +16,23 @@ import app.springboot.thymeleaf.service.EmployeeService;
 
 @Controller
 public class EmployeController {
-	
-	@Autowired private EmployeeService employeeService;
-	
+
+	@Autowired
+	private EmployeeService employeeService;
+
 	@GetMapping("/")
 	public String employees(Model model) {
 		List<Employee> employees = employeeService.getAllEmployees();
-		model.addAttribute("employees",employees);
+		model.addAttribute("employees", employees);
 		model.addAttribute("employee", new Employee());
 		model.addAttribute("title", "Employees");
 		model.addAttribute("isAdd", true);
-		
+
 		// return view in Thymeleaf template folder
 		return "view/employees";
 	}
-	
-	@PostMapping(value="/save")
+
+	@PostMapping(value = "/save")
 	public String save(@ModelAttribute Employee employee, RedirectAttributes redirectAttributes, Model model) {
 		Employee dbEmployee = employeeService.save(employee);
 		if (dbEmployee != null) {
@@ -43,8 +44,8 @@ public class EmployeController {
 			return "view/employees";
 		}
 	}
-	
-	@PostMapping(value="/update")
+
+	@PostMapping(value = "/update")
 	public String update(@ModelAttribute Employee employee, RedirectAttributes redirectAttributes, Model model) {
 		Employee dbEmployee = employeeService.update(employee);
 		if (dbEmployee != null) {
@@ -56,23 +57,19 @@ public class EmployeController {
 			return "view/employees";
 		}
 	}
-	
-	
-	
-	
-	@GetMapping(value="/getEmployee/{id}")
+
+	@GetMapping(value = "/getEmployee/{id}")
 	public String getEmployee(@PathVariable Long id, Model model) {
 		Employee employee = employeeService.findById(id);
 		List<Employee> employees = employeeService.getAllEmployees();
-		model.addAttribute("employees",employees);
-		model.addAttribute("employee",employee);
+		model.addAttribute("employees", employees);
+		model.addAttribute("employee", employee);
 		model.addAttribute("title", "Edit Employee");
 		model.addAttribute("isAdd", false);
 		return "view/employees";
 	}
-	
-	
-	@GetMapping(value="/deleteEmployee/{id}")
+
+	@GetMapping(value = "/deleteEmployee/{id}")
 	public String deleteEmployee(@PathVariable Long id, RedirectAttributes redirectAtrributes) {
 		employeeService.delete(id);
 		redirectAtrributes.addFlashAttribute("successmessage", "Employee record deleted successfully.");
